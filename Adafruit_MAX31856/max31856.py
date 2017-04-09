@@ -123,7 +123,8 @@ class MAX31856(object):
         # Setup for reading continuously with T-Type thermocouple 
         self._write_register(self.MAX31856_REG_WRITE_CR0, self.MAX31856_CR0_READ_CONT)
         self._write_register(self.MAX31856_REG_WRITE_CR1, self.CR1)
-    
+
+    @staticmethod
     def _cjTempFromBytes(MSB, LSB):
         """Takes in the MSB and LSB from a Cold Junction (CJ) temperature reading and converts it into a decimal value.
         
@@ -157,7 +158,8 @@ class MAX31856(object):
         self._logger.debug("Cold Junction Temperature {0} deg. C".format(temp_C))
         
         return temp_C
-    
+
+    @staticmethod
     def _thermocoupleTempFromBytes(byte0, byte1, byte2):
         """Converts the thermocouple byte values to a decimal value.
         
